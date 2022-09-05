@@ -1,0 +1,17 @@
+const foodSearchAPI = async (valueSearchBar, valueInput) => {
+  let url = '';
+  if (valueSearchBar === 'ingredient') {
+    url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${valueInput}`;
+  }
+  if (valueSearchBar === 'name') {
+    url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${valueInput}`;
+  }
+  if (valueSearchBar === 'firstLetter') {
+    url = `https://www.themealdb.com/api/json/v1/1/search.php?f=${valueInput}`;
+  }
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+export default foodSearchAPI;
